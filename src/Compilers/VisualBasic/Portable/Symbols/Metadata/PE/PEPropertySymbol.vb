@@ -14,6 +14,7 @@ Namespace Microsoft.CodeAnalysis.VisualBasic.Symbols.Metadata.PE
     ''' </summary>
     Friend NotInheritable Class PEPropertySymbol
         Inherits PropertySymbol
+        Implements IMetadataSymbol
 
         Private ReadOnly _name As String
         Private ReadOnly _flags As PropertyAttributes
@@ -520,6 +521,12 @@ Namespace Microsoft.CodeAnalysis.VisualBasic.Symbols.Metadata.PE
         Friend Overrides ReadOnly Property DeclaringCompilation As VisualBasicCompilation
             Get
                 Return Nothing
+            End Get
+        End Property
+
+        Public ReadOnly Property MetadataHandle As Handle Implements IMetadataSymbol.MetadataHandle
+            Get
+                Return _handle
             End Get
         End Property
     End Class

@@ -25,6 +25,7 @@ Namespace Microsoft.CodeAnalysis.VisualBasic.Symbols.Metadata.PE
     ''' <remarks></remarks>
     Friend Class PENamedTypeSymbol
         Inherits InstanceTypeSymbol
+        Implements IMetadataSymbol
 
         Private ReadOnly _container As NamespaceOrTypeSymbol
 
@@ -1421,6 +1422,12 @@ Namespace Microsoft.CodeAnalysis.VisualBasic.Symbols.Metadata.PE
         Friend NotOverridable Overrides ReadOnly Property DeclaringCompilation As VisualBasicCompilation
             Get
                 Return Nothing
+            End Get
+        End Property
+
+        Public ReadOnly Property MetadataHandle As Handle Implements IMetadataSymbol.MetadataHandle
+            Get
+                Return _handle
             End Get
         End Property
 

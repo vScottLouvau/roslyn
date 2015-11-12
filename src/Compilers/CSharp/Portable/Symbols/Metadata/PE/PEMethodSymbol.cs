@@ -16,7 +16,7 @@ namespace Microsoft.CodeAnalysis.CSharp.Symbols.Metadata.PE
     /// <summary>
     /// The class to represent all methods imported from a PE/module.
     /// </summary>
-    internal sealed class PEMethodSymbol : MethodSymbol
+    internal sealed class PEMethodSymbol : MethodSymbol, IMetadataSymbol
     {
         private class SignatureData
         {
@@ -283,6 +283,8 @@ namespace Microsoft.CodeAnalysis.CSharp.Symbols.Metadata.PE
                            _uncommonFields?._lazyThisParameter ?? InterlockedOperations.Initialize(ref AccessUncommonFields()._lazyThisParameter, new ThisParameterSymbol(this));
             return true;
         }
+
+        public Handle MetadataHandle => _handle;
 
         public override Symbol ContainingSymbol => _containingType;
 

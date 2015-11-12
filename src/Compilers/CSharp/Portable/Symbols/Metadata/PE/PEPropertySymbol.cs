@@ -18,7 +18,7 @@ namespace Microsoft.CodeAnalysis.CSharp.Symbols.Metadata.PE
     /// The class to represent all properties imported from a PE/module.
     /// </summary>
     internal sealed class PEPropertySymbol
-        : PropertySymbol
+        : PropertySymbol, IMetadataSymbol
     {
         private readonly string _name;
         private readonly PENamedTypeSymbol _containingType;
@@ -171,6 +171,8 @@ namespace Microsoft.CodeAnalysis.CSharp.Symbols.Metadata.PE
                 return true;
             }
         }
+
+        public Handle MetadataHandle => _handle;
 
         public override Symbol ContainingSymbol
         {

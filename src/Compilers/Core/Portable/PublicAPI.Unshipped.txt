@@ -656,3 +656,5 @@ Microsoft.CodeAnalysis.Semantics.OperationExtensions
 static Microsoft.CodeAnalysis.Semantics.OperationExtensions.Descendants(this Microsoft.CodeAnalysis.Semantics.IOperation operation) -> System.Collections.Generic.IEnumerable<Microsoft.CodeAnalysis.Semantics.IOperation>
 static Microsoft.CodeAnalysis.Semantics.OperationExtensions.DescendantsAndSelf(this Microsoft.CodeAnalysis.Semantics.IOperation operation) -> System.Collections.Generic.IEnumerable<Microsoft.CodeAnalysis.Semantics.IOperation>
 static Microsoft.CodeAnalysis.Semantics.OperationExtensions.GetRootOperation(this Microsoft.CodeAnalysis.ISymbol symbol, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> Microsoft.CodeAnalysis.Semantics.IOperation
+Microsoft.CodeAnalysis.IMetadataSymbol
+Microsoft.CodeAnalysis.IMetadataSymbol.MetadataHandle.get -> System.Reflection.Metadata.Handle

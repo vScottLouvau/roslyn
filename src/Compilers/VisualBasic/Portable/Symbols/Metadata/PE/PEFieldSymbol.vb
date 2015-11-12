@@ -20,6 +20,7 @@ Namespace Microsoft.CodeAnalysis.VisualBasic.Symbols.Metadata.PE
     ''' </summary>
     Friend NotInheritable Class PEFieldSymbol
         Inherits FieldSymbol
+        Implements IMetadataSymbol
 
         Private ReadOnly _handle As FieldDefinitionHandle
         Private ReadOnly _name As String
@@ -408,6 +409,12 @@ Namespace Microsoft.CodeAnalysis.VisualBasic.Symbols.Metadata.PE
         Private ReadOnly Property PEModule As PEModule
             Get
                 Return DirectCast(ContainingModule, PEModuleSymbol).Module
+            End Get
+        End Property
+
+        Public ReadOnly Property MetadataHandle As Handle Implements IMetadataSymbol.MetadataHandle
+            Get
+                Return _handle
             End Get
         End Property
     End Class

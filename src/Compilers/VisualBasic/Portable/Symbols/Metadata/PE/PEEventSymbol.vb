@@ -18,6 +18,7 @@ Namespace Microsoft.CodeAnalysis.VisualBasic.Symbols.Metadata.PE
     ''' </summary>
     Friend NotInheritable Class PEEventSymbol
         Inherits EventSymbol
+        Implements IMetadataSymbol
 
         Private ReadOnly _name As String
         Private ReadOnly _flags As EventAttributes
@@ -77,7 +78,7 @@ Namespace Microsoft.CodeAnalysis.VisualBasic.Symbols.Metadata.PE
 
             If _eventType Is Nothing Then
                 Dim metadataDecoder = New MetadataDecoder(moduleSymbol, containingType)
-                Me._eventType = MetadataDecoder.GetTypeOfToken(eventType)
+                Me._eventType = metadataDecoder.GetTypeOfToken(eventType)
             End If
 
             If Me._addMethod IsNot Nothing Then
@@ -153,7 +154,7 @@ Namespace Microsoft.CodeAnalysis.VisualBasic.Symbols.Metadata.PE
         Public Overrides ReadOnly Property DeclaredAccessibility As Accessibility
             Get
                 If Me._lazyDeclaredAccessibility = s_unsetAccessibility Then
-                    Dim accessibility As accessibility = PEPropertyOrEventHelpers.GetDeclaredAccessibilityFromAccessors(Me.AddMethod, Me.RemoveMethod)
+                    Dim accessibility As Accessibility = PEPropertyOrEventHelpers.GetDeclaredAccessibilityFromAccessors(Me.AddMethod, Me.RemoveMethod)
                     Interlocked.CompareExchange(Me._lazyDeclaredAccessibility, DirectCast(accessibility, Integer), s_unsetAccessibility)
                 End If
 
@@ -295,6 +296,11 @@ Namespace Microsoft.CodeAnalysis.VisualBasic.Symbols.Metadata.PE
             End Get
         End Property
 
+        Public ReadOnly Property MetadataHandle As Handle Implements IMetadataSymbol.MetadataHandle
+            Get
+                Return _handle
+            End Get
+        End Property
     End Class
 
 End Namespace
