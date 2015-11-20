@@ -133,7 +133,8 @@ namespace Microsoft.CodeAnalysis.CSharp
             SourceReferenceResolver sourceReferenceResolver = null,
             MetadataReferenceResolver metadataReferenceResolver = null,
             AssemblyIdentityComparer assemblyIdentityComparer = null,
-            StrongNameProvider strongNameProvider = null)
+            StrongNameProvider strongNameProvider = null,
+            MetadataImportOptions metadataImportOptions = MetadataImportOptions.Public)
             : this(outputKind, reportSuppressedDiagnostics, moduleName, mainTypeName, scriptClassName, usings, optimizationLevel, checkOverflow, allowUnsafe,
                    cryptoKeyContainer, cryptoKeyFile, cryptoPublicKey, delaySign, platform, generalDiagnosticOption, warningLevel,
                    specificDiagnosticOptions, concurrentBuild,
@@ -145,7 +146,7 @@ namespace Microsoft.CodeAnalysis.CSharp
                    metadataReferenceResolver: metadataReferenceResolver,
                    assemblyIdentityComparer: assemblyIdentityComparer,
                    strongNameProvider: strongNameProvider,
-                   metadataImportOptions: MetadataImportOptions.Public)
+                   metadataImportOptions: metadataImportOptions)
         {
         }
 

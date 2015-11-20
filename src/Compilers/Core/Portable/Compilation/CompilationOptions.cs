@@ -157,7 +157,7 @@ namespace Microsoft.CodeAnalysis
         /// <summary>
         /// Import internal/private members from all references regardless of "internals-visible-to" relationship.
         /// </summary>
-        internal MetadataImportOptions MetadataImportOptions { get; private set; }
+        public MetadataImportOptions MetadataImportOptions { get; private set; }
 
         // TODO: change visibility of the MetadataImportOptions setter to internal & protected
         internal MetadataImportOptions MetadataImportOptions_internal_protected_set { set { MetadataImportOptions = value; } }
